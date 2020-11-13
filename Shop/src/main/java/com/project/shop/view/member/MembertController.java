@@ -20,7 +20,7 @@ import com.project.shop.member.MemberVO;
 
 @Controller
 @RequestMapping(value="/member")
-public class MemberController extends BaseController{
+public class MembertController extends BaseController{
 	@Autowired
 	private MemberService memberService;
 	@Autowired
