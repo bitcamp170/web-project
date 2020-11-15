@@ -34,7 +34,9 @@ public class ProductVO {//상품
 	private int sales;// 판매
 	private int discount; // 할인률
 	private Date reg_date; // 등록 날짜 제품 등록일자
-	private int unit_price; // 할인 적용된 판매가격
+	private int unit_price; // 단위가격
+	
+	private int sale_price;//판매가격
 	
 	//private String product_id; // 상품 아이디
 	
@@ -65,8 +67,16 @@ public class ProductVO {//상품
 		this.discount = discount;
 		this.reg_date = reg_date;
 		this.unit_price = unit_price;
+		
 	}
-
+	
+	public int getSale_price() {
+		return sale_price;
+	}
+	public void setSale_price() {
+		this.sale_price = (int) (this.price*(1-this.discount/(double)100));
+	}
+	
 	public String getProduct_id() {
 		return product_id;
 	}

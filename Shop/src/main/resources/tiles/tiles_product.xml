@@ -16,7 +16,7 @@
 	<!-- 쇼핑몰 메인 페이지 레이아웃 설정 -->
 	<definition name="/product/productList" extends="baseLayout">
 		<put-attribute name="body"
-			value="/WEB-INF/views/product/NewFile.jsp" />
+			value="/WEB-INF/views/product/productList.jsp" />
 	</definition>
 	
 	

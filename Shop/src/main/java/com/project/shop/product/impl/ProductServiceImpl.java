@@ -21,18 +21,9 @@ public class ProductServiceImpl implements ProductService{
 	
 	
 	@Override
-	public Map<String, List<ProductVO>> listProduct(int productCategoryNum) throws Exception {
-		Map<String, List<ProductVO>> productMap = new HashMap<String,List<ProductVO>>();
-		List<ProductVO> productList = productDAO.selectProductList(productCategoryNum);
-		
-		if(productCategoryNum==1) {
-			productMap.put("meat", productList);
-		}else if(productCategoryNum==2) {
-			productMap.put("vegetable", productList);
-		}else if(productCategoryNum==3) {
-			productMap.put("bakery", productList);
-		}
-		return productMap;
+	public List<ProductVO> listProduct(int productCategoryNum, Map map) throws Exception {
+		List<ProductVO> productList = productDAO.selectProductList(productCategoryNum, map);
+		return productList;
 	}
 
 	@Override
@@ -41,6 +32,18 @@ public class ProductServiceImpl implements ProductService{
 		ProductVO productVO = productDAO.selectProductDetail(productId);
 		productMap.put("productVO", productVO);
 		return productMap;
+	}
+
+	@Override
+	public String productCategoryName(int productCategoryNum) throws Exception {
+		String  productCategoryName = productDAO.selectProductCategoryName(productCategoryNum);
+		return productCategoryName;
+	}
+
+	@Override
+	public int getTotalCount(int productCategoryNum) throws Exception {
+		int totalCount = productDAO.getTotalCount(productCategoryNum);
+		return totalCount;
 	}
 
 }

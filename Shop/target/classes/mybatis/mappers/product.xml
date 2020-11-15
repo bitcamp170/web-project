@@ -34,16 +34,40 @@
 		
 	</resultMap>	
 	
-	<select id="selectGoodsList" parameterType="int" resultType="productVO"   >
+	<select id="selectGoodsList" parameterType="java.util.HashMap" resultMap="productResult"   >
         <![CDATA[
-         select t.*
-          from(
-			select p.*, i.price, i.discount, i.reg_date from product p, item i
+        	SELECT *
+        	FROM ( SELECT ROWNUM R_NUM, C.*
+        			FROM (select p.*, i.price, i.discount, i.reg_date 
+        					from product p, item i
+          ]]>
         	where p.product_id=i.product_id 
-        	and product_Category_Num=#{product_Category_Num}
-            order by i.reg_Date desc)  t
-	             where   rowNum <13
-	    ]]>
+        	and product_Category_Num=#{product_category_num}
+            <choose>
+            	<when test="listKey == 'reg_date'" >
+            		order by reg_date desc )C )
+            	</when>
+            	<when test="listKey == 'price' and orderKey == 'desc' " >
+            		order by price desc ) C )
+            	</when>
+            	<when test="listKey == 'price' and orderKey == 'asc'" >
+            		order by price asc ) C )
+            	</when>
+	  		</choose>
+	  		WHERE R_NUM BETWEEN #{begin} and #{end}
+	</select>
+	
+	<select id="selectProductCategoryName" parameterType = "int" resultType ="String">
+		<![CDATA[
+			SELECT product_category_name FROM PRODUCT_CATEGORY 
+			WHERE product_category_num = #{product_category_num} 
+		]]>
+	</select>
+	
+	<select id="totalCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM PRODUCT
+		WHERE PRODUCT_CATEGORY_NUM = #{product_category_num}	
 	</select>
 	
 	<select id="selectGoodsDetail" resultType="productVO"   parameterType="int"  >

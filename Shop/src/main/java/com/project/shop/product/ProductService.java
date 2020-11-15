@@ -5,6 +5,8 @@ import java.util.Map;
 
 public interface ProductService {
 	
-	public Map<String,List<ProductVO>> listProduct(int productCategoryNum) throws Exception;
+	public List<ProductVO> listProduct(int productCategoryNum, Map map) throws Exception;
 	public Map productDetail(String product_id) throws Exception;	
+	public String productCategoryName(int productCategoryNum) throws Exception;
+	public int getTotalCount(int productCategoryNum) throws Exception;
 }

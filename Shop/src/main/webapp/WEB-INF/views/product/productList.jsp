@@ -1,3 +1,5 @@
+<%@page import="com.project.shop.product.impl.ProductDAO"%>
+<%@page import="com.project.shop.product.Paging"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"	isELIgnored="false"
 	%>
@@ -6,20 +8,22 @@
 <c:set var="contextPath"  value="${pageContext.request.contextPath }"  />
 <%
   request.setCharacterEncoding("UTF-8");
+
 %>  
 
-<!-- PAGE TITLE -->
+<!--여기서부터 시작-->
+			<!-- PAGE TITLE -->
 			<section class="bg-light p-0">
 				<div class="container py-5">
 
 					<h1 class="h3">
-						Shop Category
+					${product_category_name}
 					</h1>
 
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb fs--14">
-							<li class="breadcrumb-item"><a href="#!">Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Category</li>
+							<li class="breadcrumb-item"><a href="${contextPath}/main/main.do">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page">${product_category_name}</li>
 						</ol>
 					</nav>
 
@@ -65,15 +69,33 @@
 								<ul id="nav_responsive" class="nav flex-column d-none d-lg-block">
 
 									<li class="nav-item">
-										<a class="nav-link px-0" href="#!">
+										<a class="nav-link px-0" href="${contextPath}/product/productList.do?product_category_num=1">
 
-											<span class="badge badge-warning float-end pl--3 pr--3 pt--2 pb--2 fs--11 mt-1">
+											<!-- <span class="badge badge-warning float-end pl--3 pr--3 pt--2 pb--2 fs--11 mt-1">
 												New in stock
-											</span>
+											</span> -->
 
 											<i class="fi fi-arrow-end m-0 fs--12"></i> 
 											<span class="px-2 d-inline-block">
-												Computers
+												육류
+											</span>
+										</a>
+									</li>
+
+									<li class="nav-item">
+										<a class="nav-link px-0" href="${contextPath}/product/productList.do?product_category_num=2">
+											<i class="fi fi-arrow-end m-0 fs--12"></i> 
+											<span class="px-2 d-inline-block">
+												채소
+											</span>
+										</a>
+									</li>
+
+									<li class="nav-item">
+										<a class="nav-link px-0" href="${contextPath}/product/productList.do?product_category_num=3">
+											<i class="fi fi-arrow-end m-0 fs--12"></i> 
+											<span class="px-2 d-inline-block">
+												베이커리
 											</span>
 										</a>
 									</li>
@@ -82,25 +104,7 @@
 										<a class="nav-link px-0" href="#!">
 											<i class="fi fi-arrow-end m-0 fs--12"></i> 
 											<span class="px-2 d-inline-block">
-												Electronics
-											</span>
-										</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link px-0" href="#!">
-											<i class="fi fi-arrow-end m-0 fs--12"></i> 
-											<span class="px-2 d-inline-block">
-												Women's Fashion
-											</span>
-										</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link px-0" href="#!">
-											<i class="fi fi-arrow-end m-0 fs--12"></i> 
-											<span class="px-2 d-inline-block">
-												Home &amp; Kitchen
+												추가예정1
 											</span>
 										</a>
 									</li>
@@ -113,7 +117,7 @@
 											</span>
 
 											<span class="px-2 d-inline-block">
-												Multi level
+												추가예정2
 											</span>
 										</a>
 
@@ -175,18 +179,21 @@
 
 
 
-
+								
 								<!-- Reset Filters -->
+								<!--  
 								<div class="card rounded d-block mb-4 p-3">
 									<a href="#" class="text-danger float-end w--20 d-inline">
 										<i class="fi fi-close"></i>
 									</a>
 									Reset Filters
 								</div>
+								-->
 								<!-- /Reset Filters -->
 
 
 								<!-- Price -->
+								<!--  
 								<div class="card rounded d-block mb-4 p-3">
 									<h3 class="fs--15 mb-4">
 
@@ -249,8 +256,9 @@
 									</div>
 
 								</div>
-
+								-->
 								<!-- Color -->
+								<!-- 
 								<div class="card rounded d-block mb-4 p-3">
 									<h3 class="fs--15 mb-4">
 
@@ -316,9 +324,10 @@
 									</div>
 
 								</div>
-
+								 -->
 
 								<!-- Size -->
+								<!--  
 								<div class="card rounded d-block mb-4 p-3">
 									<h3 class="fs--15 mb-4">
 
@@ -357,10 +366,11 @@
 									</div>
 
 								</div>
-
+								-->
 
 
 								<!-- Ratings -->
+								<!-- 
 								<div class="card rounded d-block mb-4 p-3">
 									<h3 class="fs--15 mb-4">Rating</h3>
 
@@ -405,10 +415,12 @@
 									</label>
 
 								</div>
+								 -->
 								<!-- /Ratings -->
 
 
 								<!-- Brands -->
+								<!--  
 								<div class="card rounded d-block mb-4 p-3">
 
 									<div class="input-group-over">
@@ -511,14 +523,16 @@
 									</div>
 
 								</div>
+								-->
 								<!-- /Brands -->
 
 
 								<!-- optional button -->
+								<!--  
 								<button type="submit" class="btn btn-primary btn-soft btn-sm btn-block">
 									Apply Filters
 								</button>
-
+								-->
 							</form>
 
 
@@ -550,17 +564,18 @@
 									</div>
 
 									<div class="float-end fs--14 position-relative mt-1">
-										Sort by: &nbsp; <a href="#" class="text-primary text-decoration-none" data-toggle="dropdown" aria-expanded="false">
-											Popular First &nbsp; 
+										 <a href="#" class="text-primary text-decoration-none" data-toggle="dropdown" aria-expanded="false">
+											${sortby }
 											<i class="fi fi-arrow-down-slim fs--12"></i>
 										</a>
 
 										<ul class="dropdown-menu b-0 mt-3 rounded fs--15">
-											<li class="dropdown-item active"><a href="#!" class="text-muted py-2 d-block">Popular First</a></li>
-											<li class="dropdown-item"><a href="#!" class="text-muted py-2 d-block">Newest First</a></li>
-											<li class="dropdown-item"><a href="#!" class="text-muted py-2 d-block">Avg. Customer Review</a></li>
-											<li class="dropdown-item"><a href="#!" class="text-muted py-2 d-block">Price: Low to High</a></li>
-											<li class="dropdown-item"><a href="#!" class="text-muted py-2 d-block">Price: High to Low</a></li>
+											<li class="dropdown-item active">
+												<a href="${contextPath}/product/productList.do?product_category_num=${product_category_num }&listKey=reg_date&orderKey=desc" class="text-muted py-2 d-block">신상품순</a></li>
+											<li class="dropdown-item">
+												<a href="${contextPath}/product/productList.do?product_category_num=${product_category_num }&listKey=price&orderKey=asc" class="text-muted py-2 d-block">낮은가격순</a></li>
+											<li class="dropdown-item">
+												<a href="${contextPath}/product/productList.do?product_category_num=${product_category_num }&listKey=price&orderKey=desc" class="text-muted py-2 d-block">높은가격순</a></li>
 										</ul>
 									</div>
 
@@ -575,12 +590,14 @@
 							<!-- /additional filters -->
 
 
-
+							
 							<!-- product list -->
-							<div class="row gutters-xs--xs">
-
-
+								
+								<div class="row gutters-xs--xs">
+								
+								<c:forEach var="item" items="${productList}">
 								<!-- item -->
+								
 								<div class="col-6 col-md-4 mb-4 mb-2-xs">
 
 									<div class="bg-white border rounded show-hover-container p-2 h-100">
@@ -622,10 +639,10 @@
 										<!-- /hover buttons : top -->
 
 
-										<a href="shop-page-product-2.html" class="d-block text-decoration-none">
+										<a href="${contextPath}/product/productDeatil.do?product_id=${item.product_id}" class="d-block text-decoration-none">
 
 											<figure class="m-0 text-center">
-												<img class="img-fluid" src="demo.files/images/unsplash/products/thumb_330/smartwatch_1.jpg" alt="..."> 
+												<img class="img-fluid" src="${contextPath}/product/thumbnails.do?product_id=${item.product_id }&product_image=${item.product_image }" alt="상품이미지"> 
 											</figure>
 
 											<span class="d-block text-center-xs text-gray-600 py-3">
@@ -636,15 +653,22 @@
 													.text-truncate
 												-->
 												<span class="d-block fs--16 max-h-50 overflow-hidden">
-													Nothing applied to image
+													${item.product_name}
 												</span>
 
 												<!-- price -->
 												<span class="d-block text-danger font-weight-medium fs--16 mt-2">
 
-													<del class="text-muted">$220<sup>00</sup></del> 
+													<!-- <del class="text-muted">$220<sup>00</sup></del>  -->
+													<del class="text-muted">
+														<fmt:formatNumber type="number" value="${item.price}"  />원
+													</del> 
 
-													$173<sup>00</sup>
+
+													<!-- $173<sup>00</sup> -->
+													<fmt:formatNumber type="number" value="${item.sale_price}"/>원
+												
+
 												</span>
 
 												<!-- rating -->
@@ -660,9 +684,11 @@
 									</div>
 
 								</div>
+								</c:forEach>
 								<!-- /item -->
-
-
+ 								
+ 								<%-- 
+								<!--여기까지-->
 								<!-- item -->
 								<div class="col-6 col-md-4 mb-4 mb-2-xs">
 
@@ -1597,41 +1623,59 @@
 
 							</div>
 							<!-- /product list -->
-
-
-							<!-- pagination -->
-							<nav aria-label="pagination" class="mt-5">
-								<ul class="pagination pagination-pill justify-content-end justify-content-center justify-content-md-end">
-
-									<li class="page-item disabled">
-										<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-									</li>
-									
-									<li class="page-item active">
-										<a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-									</li>
-									
-									<li class="page-item" aria-current="page">
-										<a class="page-link" href="#">2</a>
-									</li>
-									
-									<li class="page-item">
-										<a class="page-link" href="#">3</a>
-									</li>
-									
-									<li class="page-item">
-										<a class="page-link" href="#">Next</a>
-									</li>
-
-								</ul>
-							</nav>
-							<!-- pagination -->
-									
-
+--%>
 
 						</div>
 						<!-- /products -->
-
+						
+						
+						<!-- pagination -->
+							<div>
+							<nav aria-label="pagination" class="mt-5">
+								<ul class="pagination pagination-pill justify-content-end justify-content-center justify-content-md-end">
+								<%--[이전으로] 사용불가 또는 안보이게 : 첫번째 블록인경우 --%>
+								<c:if test="${pvo.beginPage == 1}">
+									<li class="page-item disabled">
+										<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+									</li>
+								</c:if>
+								<c:if test="${pvo.beginPage != 1}">	
+									<li>
+										<a href="${contextPath}/product/productList.do?product_category_num=${product_category_num }&cPage=${pvo.beginPage - 1 }">Previous</a>
+									</li>
+								</c:if>
+								
+								<%-- 페이지 표시(시작페이지~끝페이지) --%>
+								<c:forEach var="pageNo" begin="${pvo.beginPage }" end="${pvo.endPage }">
+								<c:if test="${pageNo == pvo.nowPage }">
+									<li class="page-item active">
+										<a class="page-link" href="#">${pageNo } <span class="sr-only">??</span></a>
+									</li>
+								</c:if>
+								<c:if test="${pageNo != pvo.nowPage }">
+									<li class="page-item" aria-current="page">
+										<a class="page-link" href="${contextPath}/product/productList.do?product_category_num=${product_category_num}&cPage=${pageNo}">${pageNo }</a>
+									</li>
+								</c:if>
+								</c:forEach>
+								
+								<%--[다음으로] 사용여부 처리 --%>
+								<c:if test="${pvo.endPage >= pvo.totalPage }">	
+									<li class="page-item">
+										<a class="page-link">다음으로 </a>
+									</li>
+								</c:if> 
+								
+								<c:if test="${pvo.endPage < pvo.totalPage }">
+								
+									<li class="page-item">
+										<a class="page-link" href="${contextPath}/product/productList.do?product_category_num=${product_category_num}&cPage=${pvo.endPage +1}">Next</a>
+									</li>
+								</c:if>
+								</ul>
+							</nav>
+							</div>
+							<!-- pagination -->
 					</div>
 
 				</div>
@@ -1640,7 +1684,7 @@
 
 
 
-
+<%-- 
 			<!-- Footer -->
 			<footer id="footer" class="shadow-xs">
 				
@@ -1891,8 +1935,5 @@
 
 
 		</div><!-- /#wrapper -->
-
-		<script src="assets/js/core.min.js"></script>
-		
-	</body>
-</html>
+--%>
+		<script src="${contextPath}/resources/assets/js/core.min.js"></script>
