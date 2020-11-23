@@ -61,29 +61,31 @@
 
 <body class="layout-admin aside-sticky header-sticky">
 
-	<div id="wrapper" class="d-flex align-items-stretch flex-column">
+	 <div id="wrapper" class="d-flex align-items-stretch flex-column">
+      <header>
+         <tiles:insertAttribute name="header" />
+      </header>
+      <article>
+         <tiles:insertAttribute name="body" />
+      </article>
+      <footer>
+         <tiles:insertAttribute name="footer" />
+      </footer>
+   </div>
+   
+   <div id="onload_modal_shop" class="hide js-onload js-ajax-modal" 
+          data-href="${contextPath}/resources/_ajax/modal_shop.html" 
+          data-ajax-modal-delay="3000" 
+          data-ajax-modal-size="modal-lg" 
+          data-ajax-modal-centered="true" 
+          data-ajax-modal-backdrop=""></div>
 
-		<tiles:insertAttribute name="header" />
 
-		<tiles:insertAttribute name="body" />
-
-		<tiles:insertAttribute name="footer" />
-
-	</div>
-	
-	<div id="onload_modal_shop" class="hide js-onload js-ajax-modal" 
-		    data-href="${contextPath}/resources/_ajax/modal_shop.html" 
-		    data-ajax-modal-delay="3000" 
-		    data-ajax-modal-size="modal-lg" 
-		    data-ajax-modal-centered="true" 
-		    data-ajax-modal-backdrop=""></div>
-
-
-	<script src="${contextPath}/resources/assets/js/core.js"></script>
-	
-	<div id="page_js_files">
-		<!-- specific page javascript files here -->
-	</div>
+   <script src="${contextPath}/resources/assets/js/core.js"></script>
+   
+   <div id="page_js_files">
+      <!-- specific page javascript files here -->
+   </div>
 
 </body>
 
