@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
@@ -76,13 +75,11 @@ public class SnsMemberController extends BaseController{
 				
 				//vo에 값이 있으면 바로 로그인, 아니면 회원가입창으로 이동
 				if(memberVO!= null && memberVO.getMember_name()!=null) {				
-					System.out.println("로그인을 진행하니다.");
 					jsonMember = mapper.writeValueAsString(memberVO);
 					memberController.login(memberVO, request, response);
 					
 				} else {
 					vo.setPassword("0000");
-					System.out.println("회원가입을 진행합니다.");
 					session.setAttribute("memberInfo", vo);
 					jsonMember = mapper.writeValueAsString(vo);
 				}							
@@ -90,7 +87,7 @@ public class SnsMemberController extends BaseController{
 			}
 
 		}catch(Exception e) {
-			System.out.println(e);
+//			System.out.println(e);
 		}
 
 		return jsonMember;

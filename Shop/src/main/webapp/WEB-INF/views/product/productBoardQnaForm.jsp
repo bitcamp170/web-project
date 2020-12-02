@@ -28,10 +28,8 @@
 						<p> &nbsp;&nbsp;&nbsp;&nbsp;상품에 대한 문의를 남기는 공간입니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;배송, 주문(취소/교환/환불)관련 문의 및 요청사항은 1:1 문의에 남겨주세요.
 					</div>
 
-<!--
-				  	<form novalidate class="bs-validate" method="post" action="${contextPath }/product/addBoardQna.do" enctype="multipart/form-data">
--->					
-					<form  class="bs-validate" method="post" action="${contextPath }/product/addBoardQna.do" enctype="multipart/form-data">
+
+					<form novalidate class="bs-validate" method="post" action="#" enctype="multipart/form-data">
 
 						<!--
 							
@@ -47,73 +45,40 @@
 									<!--
 										PRODUCT TITLE
 									-->
-									
-									
-									
 									<div class="form-label-group mb-3">
 										<table style="color: gray;" class="table">
 											<tbody>
 												<tr>
 													<th scope="row">작성자</th>
-													<td>${memberInfo.member_id }</td>
+													<td>이아진</td>
 												</tr>
 												<tr>
 													<th scope="row">이메일</th>
-													<td>${memberInfo.email }</td>
+													<td>leah@leah.com</td>
 												</tr>
 												<tr>
 													<th scope="row">핸드폰</th>
-													<td>${memberInfo.phone }</td>
+													<td>010-0000-0000</td>
 												</tr>
 											</tbody>
 										</table>
 										
 									</div>
-									<input  type="hidden" name="member_id" value="${memberInfo.member_id }" />
-									<input type="hidden" name="product_id" value="${product_id }"/>
-									<input type="hidden" name="qna_category_num" value="3"/>
-									
-									<c:if test="${not empty product_qna_num }">
-										<input id="product_title" name="title" required type="text"  value="${qna.title }" class="form-control">
+						
+									<input required placeholder="제목을 입력해주세요" id="product_title" name="product_title" type="text" value="" class="form-control">
 										<label for="product_title"></label>
-									</c:if>
-									<c:if test="${empty qproduct_qna_num }">
-										<input id="product_title" name="title" required type="text"  placeholder="제목을 입력해주세요" class="form-control">
-										<label for="product_title"></label>
-									</c:if>
-									
-									<c:if test="${not empty product_qna_num }">
-										<textarea name="contents" class="summernote-editor w-100 h--350" 
-										data-min-height="350" 
-										data-max-height="2800" 
-										data-focus="false" 
-										data-lang="en-US" 
-										data-ajax-url="_ajax/demo.summernote.php" 
-										data-ajax-params="['action','editor:image:upload']" 
 
-										data-toolbar='[
-												["style", ["style"]],
-												["font", ["bold", "italic", "underline", "clear"]],
-												["fontname", ["fontname"]],
-												["color", ["color"]],
-												["para", ["ul", "ol", "paragraph"]],
-												["table", ["table"]],
-												["help", ["help"]]
-											]'>${qna.contents }</textarea>
-											<br><br>
-											<input type="submit" class="btn btn-purple btn-soft mb-1" value="수정">
-											<input type="button" value="취소">
-									</c:if>
 									
-									<c:if test="${empty product_qna_num }">
-										<textarea name="contents" class="summernote-editor w-100 h--350" 
+									<textarea name="product_description" class="summernote-editor w-100 h--350" 
 										data-placeholder="문의사항을 적어주세요" 
 										data-min-height="350" 
 										data-max-height="2800" 
 										data-focus="false" 
 										data-lang="en-US" 
+
 										data-ajax-url="_ajax/demo.summernote.php" 
 										data-ajax-params="['action','editor:image:upload']" 
+
 										data-toolbar='[
 												["style", ["style"]],
 												["font", ["bold", "italic", "underline", "clear"]],
@@ -125,18 +90,16 @@
 											]'></textarea>
 											
 											<br><br>
-											
-												<input type="submit" class="btn btn-purple btn-soft mb-1" value="문의등록">
-									</c:if>
-									
-												
-										<!--  
+											<a href="${contextPath }/product/productBoardQnaForm.do?product_id=${vo.product_id}">
+												<button type="submit" class="btn btn-purple btn-soft mb-1">
+													문의등록
+												</button>
+											</a>
 											<a href="${contextPath }/product/productBoardQnaForm.do?product_id=${vo.product_id}">
 												<button type="button" class="btn btn-purple btn-soft mb-1">
 													이전으로
 												</button>
 											</a> 
-										-->
 								</div>
 
 
@@ -148,9 +111,9 @@
 									<div class="clearfix bg-light p-2 mb-2 rounded">
 
 										<label class="btn btn-warning cursor-pointer position-relative">
-<!-- 
-											<input	name="file" 
-													multiple="multiple"
+
+											<input	name="product_image[]" 
+													multiple="" 
 													type="file" 
 
 													data-file-ext="jpg,jpeg,png" 
@@ -170,25 +133,8 @@
 													data-file-btn-clear="a.js-file-btn-clear" 
 													data-file-preview-img-cover="true" 
 													data-file-preview-class="shadow-md my-2 mr-3 rounded float-start" 
-													class="custom-file-input absolute-full"/> => 이거 적용하면 파일 안받아와짐.... 왤까... 휴 ... ㅋ
- --> 										<input name="file" multiple="multiple" type="file" 
- 													data-file-ext="jpg,jpeg,png" 
- 													data-file-max-size-kb-per-file="3072" 
- 													data-file-max-size-kb-total="30720" 
-													data-file-max-total-files="10" 
-													data-file-ext-err-msg="Allowed:" 
-													data-file-exist-err-msg="File already exists:" 
-													data-file-size-err-item-msg="File too large!" 
-													data-file-size-err-total-msg="Total allowed size exceeded!" 
-													data-file-size-err-max-msg="Maximum allowed files:" 
-													data-file-toast-position="top-center" 
-													data-file-preview-container=".js-file-preview-container" 
-													data-file-preview-img-height="100" 
-													data-file-preview-show-info="true" 
-													data-file-btn-clear="a.js-file-btn-clear" 
-													data-file-preview-img-cover="true" 
-													data-file-preview-class="shadow-md my-2 mr-3 rounded float-start" 
-													/> 
+													class="custom-file-input absolute-full">
+
 												<span class="group-icon">
 													<i class="fi fi-arrow-upload"></i>
 													<i class="fi fi-circle-spin fi-spin"></i>

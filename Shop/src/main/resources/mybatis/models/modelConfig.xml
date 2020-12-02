@@ -7,6 +7,7 @@
 	<settings>
   		<setting name="cacheEnabled" value="false"/>
   		<setting name="jdbcTypeForNull" value="NULL" />
+  		<setting value="VARCHAR" name="jdbcTypeForNull"/>
   	</settings>
    
  	<!-- <typeAliases>
@@ -23,6 +24,10 @@
   	<typeAlias type="com.project.shop.product.ProductVO" alias = "productVO"/>
   	<typeAlias type="com.project.shop.board.BoardVO" alias="boardVO" />
   	<typeAlias type="com.project.shop.product.board.ProductBoardQnaVO" alias="product_qnaVO"/>
+  	<typeAlias type="com.project.shop.product.board.ReviewVO" alias="reviewVO"/>
+    <typeAlias type="com.project.shop.cart.CartVO" alias="cartVO"/>
+  	<typeAlias type="com.project.shop.orders.OrderVO" alias="orderVO"/>
+
   </typeAliases>
   
  
