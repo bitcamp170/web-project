@@ -9,7 +9,6 @@
   request.setCharacterEncoding("UTF-8");
 %>
 
-
 			<!-- PAGE TITLE -->
 			<section class="bg-light p-0">
 				<div class="container py-5">

@@ -329,7 +329,7 @@
 										<div class="clearfix d-block px-3 py-3 border-top">
 
 											<div class="h--50 overflow-hidden float-start mt-1"> 
-												<img width="40" src="demo.files/images/unsplash/products/thumb_330/barrett-ward-fYYUgvHYgpU-unsplash-min.jpg" alt="...">
+												<img width="40" src="${contextPath }/resources/demo.files/images/unsplash/products/thumb_330/barrett-ward-fYYUgvHYgpU-unsplash-min.jpg" alt="...">
 											</div> 
 
 											<a href="#!" class="fs--15 d-block position-relative">
@@ -347,7 +347,7 @@
 										<div class="clearfix d-block px-3 py-3 border-top">
 
 											<div class="h--50 overflow-hidden float-start mt-1"> 
-												<img width="40" src="demo.files/images/unsplash/products/thumb_330/hardik-sharma-CrPAvN29Nhs-unsplash-min.jpg" alt="...">
+												<img width="40" src="${contextPath }/resources/demo.files/images/unsplash/products/thumb_330/hardik-sharma-CrPAvN29Nhs-unsplash-min.jpg" alt="...">
 											</div> 
 
 											<a href="#!" class="fs--15 d-block position-relative">

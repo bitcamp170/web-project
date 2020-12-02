@@ -7,7 +7,13 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
-
+<script type="text/javascript">
+const nav = document.querySelector('.nav-item');
+nav.addEventListener('click',(event)=>{
+	console.log("nav");
+	nav.classList.add("active");
+});
+</script>
 <div class="col-12 col-sm-12 col-md-12 col-lg-3 mb--60">
 
 	<nav class="sticky-kit nav-deep nav-deep-light">
