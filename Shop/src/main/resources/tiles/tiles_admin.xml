@@ -37,4 +37,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/admin-noticeList.jsp" />
       </definition>
       
+      <!-- 상품목록 레이아웃 -->
+      <definition name="/admin/productList" extends="adminLayout">
+		<put-attribute name="tag" value="/WEB-INF/views/common/admin/admin-boardTag.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/admin/goods/productList.jsp" />
+      </definition>
+      
+      
 </tiles-definitions>
